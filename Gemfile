@@ -24,6 +24,9 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+#gem
+gem 'devise', '~> 4.9'
+
 
 #不會出現already initialized constant errors" with net/protocol 錯誤
 gem 'net-http', '~> 0.3.2'
