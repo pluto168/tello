@@ -26,6 +26,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 #gem
 gem 'devise', '~> 4.9'
+gem 'acts_as_list', '~> 1.1'
 
 
 #不會出現already initialized constant errors" with net/protocol 錯誤
