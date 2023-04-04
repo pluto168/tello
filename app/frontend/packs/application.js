@@ -15,6 +15,8 @@ import 'styles'
 
 //vue.js
 import Vue from 'vue/dist/vue.esm';
+import List from 'components/list';
+
 document.addEventListener("DOMContentLoaded",function(event){
     let el = document.querySelector('#board');
     if (el) {
@@ -22,6 +24,9 @@ document.addEventListener("DOMContentLoaded",function(event){
             el: el,
             data: {
                 lists: JSON.parse(el.dataset.lists)
+            },
+            components: {
+                List: List
             }
         });
     }
