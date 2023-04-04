@@ -12,3 +12,17 @@ ActiveStorage.start()
 
 import 'scripts'
 import 'styles'
+
+//vue.js
+import Vue from 'vue/dist/vue.esm';
+document.addEventListener("DOMContentLoaded",function(event){
+    let el = document.querySelector('#board');
+    if (el) {
+        new Vue({
+            el: el,
+            data: {
+                lists: JSON.parse(el.dataset.lists)
+            }
+        });
+    }
+})
