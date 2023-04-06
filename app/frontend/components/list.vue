@@ -4,6 +4,11 @@
 
         <div class="deck">
             <Card v-for="card in list.cards" :card="card" :key="card.id"></Card>
+            <div class="input-area">
+                <textarea class="content"></textarea>
+                <button class="button" @click="createCard">新增卡片</button>
+                
+            </div>
         </div>
     </div>
 </template>
@@ -27,5 +32,27 @@
         .deck {
             @apply .mt-2;
         }
+        
+        .input-area {
+            @apply .mt-2;
+
+            .content {
+                @apply .w-full .px-2 .py-2 .rounded-sm;
+
+                &:focus {
+                    @apply .outline-none;
+                }
+            }
+
+            .button {
+                @apply .px-3 .py-1 .font-semibold .text-sm .bg-blue-300 .rounded; 
+
+                &:focus {
+                    @apply .outline-none;
+                }
+            }
+        }
     }
 </style>
+
+
