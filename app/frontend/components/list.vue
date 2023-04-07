@@ -7,8 +7,10 @@
           <Card v-for="card in cards" :card="card" :key="card.id"></Card>
 
           <div class="input-area">
-              <textarea class="content" v-model="content"></textarea>
-              <button class="button" @click="createCard">新增卡片</button>
+              <button v-if="!editing" class="button bg-gray-400" @click="newCard">新增卡片</button>
+              <textarea v-if="editing" class="content" v-model="content"></textarea>
+              <button v-if="editing" class="button bg-green-400" @click="createCard">建立卡片</button>
+              <button v-if="editing" class="button bg-gray-400" @click="editing = false">取消</button>
           </div>
       </div>
   </div>
@@ -25,10 +27,16 @@ export default {
   data: function() {
       return {
       content: '', 
-      cards: this.list.cards
+      cards: this.list.cards,
+      editing: false
       }
   },
   methods: {
+      newCard(event){
+        event.preventDefault();
+        this.editing = true;
+      },
+
       createCard(event) {
           event.preventDefault();
           // console.log(this.content);
@@ -42,9 +50,10 @@ export default {
             data: data,
             dataType: 'json',
             success: resp => {
-              console.log(resp);
+              // console.log(resp);
               this.cards.push(resp);
               this.content = "";
+              this.editing = false;
             },
             error: err => {
               console.log(err);
@@ -73,7 +82,7 @@ export default {
           }
       }
       .button {
-          @apply .px-3 .py-1 .font-semibold .text-sm .bg-blue-300 .rounded;
+          @apply .px-3 .py-1 .font-semibold .text-sm .rounded;
           &:focus {
           @apply .outline-none;
           }
