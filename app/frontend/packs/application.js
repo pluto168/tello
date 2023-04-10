@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded",function(event){
         new Vue({
             el: el,
             data: {
-                lists: JSON.parse(el.dataset.lists)
+                lists: [] //JSON.parse(el.dataset.lists)
             },
             components: { List: List,draggable },
             methods: {
@@ -47,6 +47,20 @@ document.addEventListener("DOMContentLoaded",function(event){
                         } 
                     });
                 }
+            },
+            beforeMount() {
+                Rails.ajax({
+                    url: 'lists.json',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: resp => {
+                        // console.log(resp);
+                        this.lists = resp;
+                    },
+                    error: err => {
+                        console.log(err);
+                    }
+                });
             }
         });
     }
