@@ -9,7 +9,7 @@
                 <a href="#" class="closeButton" @click="close">
                     <i class="fa-solid fa-circle-xmark"></i>
                 </a>    
-                <textarea class="content">{{ card.name }}</textarea>
+                <textarea class="content" v-model="card_name"></textarea>
                 <button class="updateButton" @click="update">更新</button>
             </div>
         </div>
@@ -17,21 +17,26 @@
 </template>
 
 <script>
+    // import { mapActions } from 'vuex';
+
     export default {
         name: 'Card',
         data: function(){
             return {
+                card_name: this.card.name,
                 editing: false
             }
         },
         props: ['card'],
         methods: {
+            // ...mapActions(["updateCard"]),
             close(event) {
                 event.preventDefault();
                 this.editing = false;
             },
             update(event){
                 event.preventDefault();
+                this.$store.dispatch("updateCard", {id: this.card.id, name: this.card_name});
                 this.editing = false;
             }
         }

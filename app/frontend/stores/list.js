@@ -16,10 +16,35 @@ export default new Vuex.Store({
   mutations: {
     UPDATE_LISTS(state, lists) {
       state.lists = lists;
+    },
+    REPLACE_CARD(state, card) {
+      let list_index = state.lists.findIndex(list => list.id == card.list_id);
+      let card_index = state.lists[list_index].cards.findIndex(item => item.id == card.id);
+      state.lists[list_index].cards.splice(card_index, 1, card);
+      // console.log(list_index, card_index);
     }
   },
 
   actions: {
+    updateCard({commit}, {id,name}){
+      let data = new FormData();
+      data.append("card[name]", name);
+
+      Rails.ajax({
+        //
+        url: `/cards/${id}/`,
+        type: 'PUT',
+        data: data,
+        dataType: 'json',
+        success: resp => {
+          commit('REPLACE_CARD', resp);
+          // console.log(resp);
+        },
+        error: err => {
+          console.log(err);
+        }
+      });
+    },
     moveList({commit, state},event){
       let data = new FormData();
       data.append("list[position]", event.moved.newIndex + 1);
