@@ -15,10 +15,11 @@ import 'styles'
 
 //vue.js
 import Vue from 'vue/dist/vue.esm';
-import List from 'components/list';
 import draggable from 'vuedraggable';
 import store from 'stores/list';
 import { mapGetters, mapActions } from "vuex"
+import List from 'components/list';
+import Newlist from 'components/newlist';
 
 document.addEventListener("DOMContentLoaded",function(event){
     let el = document.querySelector('#board');
@@ -40,7 +41,7 @@ document.addEventListener("DOMContentLoaded",function(event){
                     }
                 }
             },
-            components: { List: List,draggable },
+            components: { List: List,draggable, Newlist},
             methods: {
                 ...mapActions(["loadList","moveList"]),
                 // listMoved(event){
