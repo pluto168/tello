@@ -38,10 +38,10 @@ export default new Vuex.Store({
         url: `/lists/${list_id}`,
         type: 'DELETE',
         dataType: 'json',
-        success: resp => {
-          commit('REMOVE_LIST', list_id);
-          // console.log(resp);
-        },
+        // success: resp => {
+        //   commit('REMOVE_LIST', list_id);
+        //   // console.log(resp);
+        // },
         error: err => {
           console.log(err);
         }
@@ -57,10 +57,10 @@ export default new Vuex.Store({
         type: 'POST',
         data,
         dataType: 'json',
-        success: resp => {
-          commit('ADD_LIST', resp);
-          // console.log(resp);
-        },
+        // success: resp => {
+        //   commit('ADD_LIST', resp);
+        //   // console.log(resp);
+        // },
         error: err => {
           console.log(err);
         }
@@ -77,10 +77,10 @@ export default new Vuex.Store({
         type: 'PUT',
         data: data,
         dataType: 'json',
-        success: resp => {
-          commit('REPLACE_CARD', resp);
-          // console.log(resp);
-        },
+        // success: resp => {
+        //   commit('REPLACE_CARD', resp);
+        //   // console.log(resp);
+        // },
         error: err => {
           console.log(err);
         }
