@@ -24,6 +24,7 @@ import Newlist from 'components/newlist';
 document.addEventListener("DOMContentLoaded",function(event){
     let el = document.querySelector('#board');
     if (el) {
+        window.$store = store;
         new Vue({
             el: el,
             store: store,

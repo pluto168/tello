@@ -66,7 +66,7 @@ export default {
             data: data,
             dataType: 'json',
             success: resp => {
-            console.log(resp);
+            // console.log(resp);
             }, 
             error: err => {
               console.log(err);

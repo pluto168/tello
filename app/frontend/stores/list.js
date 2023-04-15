@@ -39,7 +39,7 @@ export default new Vuex.Store({
         type: 'DELETE',
         dataType: 'json',
         success: resp => {
-          commit('REMOVE_LIST', list_id)
+          commit('REMOVE_LIST', list_id);
           // console.log(resp);
         },
         error: err => {
